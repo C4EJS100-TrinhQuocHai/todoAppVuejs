@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="text-center mt-5">My Vue todo app</h1>
     <div class="d-flex">
-      <input v-model="task" class="form-control" type="text" placeholder="nhập new task! " />
+      <input v-model="task" class="form-control" type="text" placeholder="nhập new task 1! " />
       <button v-on:click="submitTask" class="btn btn-warning">Submit</button>
     </div>
     <table class="table table-bordered">
