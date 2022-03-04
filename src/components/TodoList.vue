@@ -16,14 +16,14 @@
       </thead>
       <tbody>
         <tr v-for="(task1,index) in tasks" :key="index" >
-          <th>{{ task1.name}}</th>
-          <td> {{task1.status}}</td>
-          <td>
+          <th class="listTask">{{ task1.name }}</th>
+          <td class="statusTask" v-on:click="statusTask(index)"> {{task1.status}}</td>
+          <td class="listEdit">
               <div v-on:click="editTask(index)">
                   <span class="fa fa-pen "> </span>
               </div>
           </td>
-          <td>
+          <td class="listEdit">
               <div v-on:click="deleteTask(index)">
                   <span class="fa-solid fa-trash"> </span>
               </div>
@@ -79,14 +79,40 @@ export default {
             this.tasks.splice(index,1);
         },
         editTask: function(index){
+          console.log(index);
            this.task=this.tasks[index].name;
            this.editedTask=index;
            
+        },
+        statusTask: function(index){
+          //console.log(this.tasks[index].status);
+          console.log(index);
+         if(this.tasks[index].status==='to-do'){
+           this.tasks[index].status= 'done'
+         }else if(this.tasks[index].status==='done'){
+           this.tasks[index].status= 'to-do'
+
+         }
         }
     }
 
 };
 </script>
 
-<style>
+<style scoped>
+  .table-bordered{
+    text-align: center;
+  }
+  .statusTask{
+    background-color: rgb(191, 191, 223);
+    text-align: center;
+  }
+  .listTask{
+    background-color: rgb(168, 168, 209);
+
+  }
+  .listEdit{
+    background-color: rgb(191, 191, 223);
+
+  }
 </style>
